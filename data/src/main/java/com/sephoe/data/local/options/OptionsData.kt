@@ -1,5 +1,5 @@
 package com.sephoe.data.local.options
 
-data class OptionsModel(
+data class OptionsData(
         val name: String
 )
