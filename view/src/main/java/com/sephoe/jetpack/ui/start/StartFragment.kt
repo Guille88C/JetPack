@@ -8,10 +8,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.guill.coroutines.R
 import com.example.guill.coroutines.databinding.StartFragmentBinding
 import com.sephoe.jetpack.ui.adapter.StartOptionsAdapter
-import com.sephoe.jetpack.ui.pagelist.PageListFragment
 import kotlinx.android.synthetic.main.start_fragment.*
 
 class StartFragment : Fragment() {
