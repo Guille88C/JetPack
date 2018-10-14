@@ -17,44 +17,10 @@
         android:focusableInTouchMode="true"
         tools:context="com.sephoe.jetpack.ui.start.StartFragment">
 
-        <TextView
-            android:id="@+id/tvStartName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.name}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Name" />
-
-        <Button
-            android:id="@+id/bStartChange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.onChangeNameClick()}"
-            android:text="Change"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvStartName" />
-
-        <EditText
-            android:id="@+id/etStartChangeName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.name}"
-            android:afterTextChanged="@{(p0) -> viewModel.onAfterTextChangedChangeName(p0)}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bStartChange"
-            tools:text="name" />
-
-        <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:onClick="@{() -> viewModel.onPageListClick()}"-->
-        <!--android:text="@string/start_page_list_button_name"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent" />-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvStartOptions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </android.support.constraint.ConstraintLayout>
 
