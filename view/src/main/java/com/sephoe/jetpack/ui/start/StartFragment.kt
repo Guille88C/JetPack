@@ -34,8 +34,8 @@ class StartFragment : Fragment() {
         binding.viewModel = viewModel
 
         viewModel.optionsLiveData.observe(this, Observer {
-            it?.let {
-                (rvStartOptions.adapter as StartOptionsAdapter).update(it)
+            it?.run {
+                (rvStartOptions.adapter as? StartOptionsAdapter?)?.update(this)
             }
         })
 
