@@ -2,34 +2,43 @@ package com.sephoe.jetpack.ui.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import com.example.guill.coroutines.R
-import kotlinx.android.synthetic.main.start_options_item.view.*
+import com.example.guill.coroutines.databinding.StartOptionsItemBinding
+import com.sephoe.domain.options.OptionsEntity
 
-class StartOptionsAdapter : RecyclerView.Adapter<StartOptionsAdapter.OptionsViewHolder>() {
+class StartOptionsAdapter(
+        private val _options: MutableList<OptionsEntity> = mutableListOf()
+) : RecyclerView.Adapter<StartOptionsAdapter.OptionsViewHolder>() {
 
-    // Attributes
-
-    private val _options = mutableListOf<String>()
-
-
-    //----------------------------------------------------------------------------------------------
     // RecyclerView functions
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): OptionsViewHolder {
-        return OptionsViewHolder(LayoutInflater.from(p0.context).inflate(R.layout.start_options_item, p0, false))
+        val inflater = LayoutInflater.from(p0.context)
+        val binding = StartOptionsItemBinding.inflate(inflater)
+        return OptionsViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = 10
+    override fun getItemCount(): Int = _options.size
 
     override fun onBindViewHolder(p0: OptionsViewHolder, p1: Int) {
-        p0.itemView.tvOptionsItemOption.text = "Option $p1"
+        p0.binding.options = _options[p1]
+        p0.binding.executePendingBindings()
     }
 
 
     //----------------------------------------------------------------------------------------------
     // ViewHolder
 
-    inner class OptionsViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    inner class OptionsViewHolder(val binding: StartOptionsItemBinding) : RecyclerView.ViewHolder(binding.root)
+
+
+    //----------------------------------------------------------------------------------------------
+    // Public functions
+
+    fun update(p0: List<OptionsEntity>) {
+        _options.clear()
+        _options.addAll(p0)
+
+        notifyDataSetChanged()
+    }
 }

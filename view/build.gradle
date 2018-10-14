@@ -56,6 +56,9 @@ dependencies {
     // Arch
     implementation "android.arch.lifecycle:extensions:$arch_version"
 
+    // Domain
+    implementation project(':domain')
+
     // Tests
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

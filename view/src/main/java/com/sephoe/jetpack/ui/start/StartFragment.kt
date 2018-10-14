@@ -33,10 +33,17 @@ class StartFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         viewModel = ViewModelProviders.of(this).get(StartViewModel::class.java)
-
         binding.viewModel = viewModel
 
+        viewModel.optionsLiveData.observe(this, Observer {
+            it?.let {
+                (rvStartOptions.adapter as StartOptionsAdapter).update(it)
+            }
+        })
+
         initOptions()
+
+        viewModel.onCreate(savedInstanceState)
     }
 
     private fun initOptions() {
