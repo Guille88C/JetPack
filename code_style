@@ -1,0 +1,32 @@
+// ---- Code style ----
+
+
+class <name_class> : Activity / Fragment, Interface1, Interface2 {
+	// ---- Attributes ----
+	// ---- END Attributes ----
+
+	// ---- Builder ----
+	// ---- END Builder ----
+
+	// ---- Activity / Fragment ----
+	override fun onCreate(...) {
+		...
+	}
+
+	overrde fun onBackPressed(...) {
+		...
+	}
+
+	...
+
+	// ---- END Activity / Fragment ----
+
+	// ---- Interface1 ----
+	// ---- END Interface1 ----
+
+	// ---- Interface2 ----
+	// ---- END Interface2 ----
+
+	// ---- Public ----
+	// ---- END Public ----
+}
