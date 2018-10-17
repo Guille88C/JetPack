@@ -8,6 +8,6 @@ class OptionsUseCaseImpl : OptionsUseCase {
 
     override fun getOptions(): List<OptionsEntity> {
         val options = _service.getOptions()
-        return OptionsMapper.fromService(options)
+        return OptionsMapper.toView(options)
     }
 }
