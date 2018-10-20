@@ -1,13 +1,13 @@
 package com.sephoe.jetpack.ui.pagelist
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.guill.coroutines.R
 
-class PageListFragment : Fragment() {
+class PageListFragment : androidx.fragment.app.Fragment() {
 
     companion object {
         fun newInstance(): PageListFragment = PageListFragment()

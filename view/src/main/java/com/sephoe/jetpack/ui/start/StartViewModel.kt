@@ -1,11 +1,12 @@
 package com.sephoe.jetpack.ui.start
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import android.os.Bundle
 import com.sephoe.domain.options.OptionsUseCaseImpl
 import com.sephoe.domain.options.OptionsEntity
 import com.sephoe.domain.options.OptionsUseCase
+import com.sephoe.jetpack.jetpack.SingleLiveEvent
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 
@@ -16,6 +17,7 @@ class StartViewModel : ViewModel() {
     private val _optionsDomain: OptionsUseCase = OptionsUseCaseImpl()
 
     val optionsLiveData = MutableLiveData<List<OptionsEntity>>()
+    val clickLiveEvent = SingleLiveEvent<Any?>()
 
 
     //----------------------------------------------------------------------------------------------
@@ -28,6 +30,10 @@ class StartViewModel : ViewModel() {
                 optionsLiveData.value = options
             }
         }
+    }
+
+    fun onGoToClick() {
+        clickLiveEvent.call()
     }
 
 }

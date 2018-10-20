@@ -10,18 +10,37 @@
             type="com.sephoe.jetpack.ui.start.StartViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/start"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusableInTouchMode="true"
         tools:context="com.sephoe.jetpack.ui.start.StartFragment">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvStartOptions"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
 
-    </android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvStartName"
+            android:text="First fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Button
+            android:id="@+id/bStartGo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go to second fragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvStartName"
+            android:onClick="@{() -> viewModel.onGoToClick()}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

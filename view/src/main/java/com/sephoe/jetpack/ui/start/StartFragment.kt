@@ -1,18 +1,18 @@
 package com.sephoe.jetpack.ui.start
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.NavHostFragment
+import com.example.guill.coroutines.R
 import com.example.guill.coroutines.databinding.StartFragmentBinding
 import com.sephoe.jetpack.ui.adapter.StartOptionsAdapter
 import kotlinx.android.synthetic.main.start_fragment.*
 
-class StartFragment : Fragment() {
+class StartFragment : androidx.fragment.app.Fragment() {
 
     companion object {
         fun newInstance() = StartFragment()
@@ -41,12 +41,16 @@ class StartFragment : Fragment() {
 
         initOptions()
 
+        viewModel.clickLiveEvent.observe(this, Observer {
+            NavHostFragment.findNavController(this).navigate(R.id.action_startFragment_to_pageListFragment)
+        })
+
         viewModel.onCreate(savedInstanceState)
     }
 
     private fun initOptions() {
         rvStartOptions.setHasFixedSize(true)
-        rvStartOptions.layoutManager = LinearLayoutManager(context)
+        rvStartOptions.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         rvStartOptions.adapter = StartOptionsAdapter()
     }
 }

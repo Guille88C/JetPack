@@ -1,6 +1,6 @@
 package com.sephoe.jetpack.ui.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.guill.coroutines.databinding.StartOptionsItemBinding
@@ -8,7 +8,7 @@ import com.sephoe.domain.options.OptionsEntity
 
 class StartOptionsAdapter(
         private val _options: MutableList<OptionsEntity> = mutableListOf()
-) : RecyclerView.Adapter<StartOptionsAdapter.OptionsViewHolder>() {
+) : androidx.recyclerview.widget.RecyclerView.Adapter<StartOptionsAdapter.OptionsViewHolder>() {
 
     // RecyclerView functions
 
@@ -29,7 +29,7 @@ class StartOptionsAdapter(
     //----------------------------------------------------------------------------------------------
     // ViewHolder
 
-    inner class OptionsViewHolder(val binding: StartOptionsItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class OptionsViewHolder(val binding: StartOptionsItemBinding) : androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root)
 
 
     //----------------------------------------------------------------------------------------------
