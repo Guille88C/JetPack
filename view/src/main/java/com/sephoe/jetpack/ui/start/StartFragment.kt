@@ -10,13 +10,10 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.guill.coroutines.R
 import com.example.guill.coroutines.databinding.StartFragmentBinding
 import com.sephoe.jetpack.ui.adapter.StartOptionsAdapter
+import com.sephoe.jetpack.ui.pagelist.PageListFragmentDirections
 import kotlinx.android.synthetic.main.start_fragment.*
 
 class StartFragment : androidx.fragment.app.Fragment() {
-
-    companion object {
-        fun newInstance() = StartFragment()
-    }
 
     private lateinit var viewModel: StartViewModel
     private lateinit var binding: StartFragmentBinding
@@ -42,7 +39,10 @@ class StartFragment : androidx.fragment.app.Fragment() {
         initOptions()
 
         viewModel.clickLiveEvent.observe(this, Observer {
-            NavHostFragment.findNavController(this).navigate(R.id.action_startFragment_to_pageListFragment)
+            val action = StartFragmentDirections.actionStartFragmentToPageListFragment()
+            action.setAmount(10)
+            NavHostFragment.findNavController(this).navigate(action)
+
         })
 
         viewModel.onCreate(savedInstanceState)
@@ -53,4 +53,5 @@ class StartFragment : androidx.fragment.app.Fragment() {
         rvStartOptions.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         rvStartOptions.adapter = StartOptionsAdapter()
     }
+
 }
