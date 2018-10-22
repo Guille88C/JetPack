@@ -1,4 +1,4 @@
-package com.sephoe.jetpack.jetpack
+package com.sephoe.jetpack.elements.events
 
 import android.util.Log
 import androidx.annotation.MainThread
@@ -6,11 +6,9 @@ import androidx.annotation.Nullable
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import java.util.concurrent.atomic.AtomicBoolean
 
-class SingleLiveEvent<T> : MutableLiveData<T>() {
-
-    private val mPending = AtomicBoolean(false)
+open class SingleLiveEvent<T> : MutableLiveData<T>() {
+    protected val singleEventUtil = SingleLiveEventUtil()
 
     @MainThread
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
@@ -18,7 +16,7 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
             Log.d("SingleLiveEvent", "Multiple observers registered but only one will be notified of changes.")
         }
         super.observe(owner, Observer<T> { t ->
-            if (mPending.compareAndSet(true, false)) {
+            if (singleEventUtil.noObserved()) {
                 observer.onChanged(t)
             }
         })
@@ -26,7 +24,7 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
 
     @MainThread
     override fun setValue(@Nullable t: T?) {
-        mPending.set(true)
+        singleEventUtil.reset()
         super.setValue(t)
     }
 
@@ -36,5 +34,9 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
     @MainThread
     fun call() {
         value = null
+    }
+
+    protected fun parentObserve(owner: LifecycleOwner, observer: Observer<in T>) {
+        super.observe(owner, observer)
     }
 }

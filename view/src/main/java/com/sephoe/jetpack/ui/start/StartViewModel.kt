@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.sephoe.domain.options.OptionsUseCaseImpl
 import com.sephoe.domain.options.OptionsEntity
 import com.sephoe.domain.options.OptionsUseCase
-import com.sephoe.jetpack.jetpack.SingleLiveEvent
+import com.sephoe.jetpack.elements.events.SingleLiveEvent
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 
