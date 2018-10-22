@@ -4,20 +4,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.guill.coroutines.R
-import kotlinx.android.synthetic.main.page_list_fragment.*
+import androidx.lifecycle.ViewModelProviders
+import com.example.guill.coroutines.databinding.PageListFragmentBinding
 
 class PageListFragment : androidx.fragment.app.Fragment() {
 
+    private lateinit var viewModel: PageListViewModel
+    private lateinit var binding: PageListFragmentBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.page_list_fragment, container, false)
+        binding = PageListFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        viewModel = ViewModelProviders.of(this).get(PageListViewModel::class.java)
+        binding.viewModel = viewModel
         val amount = PageListFragmentArgs.fromBundle(arguments).amount
-        tvPageListAmount.text = "amout = $amount"
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.unbind()
+    }
 }

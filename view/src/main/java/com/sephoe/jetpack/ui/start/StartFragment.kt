@@ -30,20 +30,8 @@ class StartFragment : androidx.fragment.app.Fragment() {
         viewModel = ViewModelProviders.of(this).get(StartViewModel::class.java)
         binding.viewModel = viewModel
 
-        viewModel.optionsLiveData.observe(this, Observer {
-            it?.run {
-                (rvStartOptions.adapter as? StartOptionsAdapter?)?.update(this)
-            }
-        })
-
         initOptions()
-
-        viewModel.clickLiveEvent.observe(this, Observer {
-            val action = StartFragmentDirections.actionStartFragmentToPageListFragment()
-            action.setAmount(10)
-            NavHostFragment.findNavController(this).navigate(action)
-
-        })
+        initObservers()
 
         viewModel.onCreate(savedInstanceState)
     }
@@ -54,4 +42,23 @@ class StartFragment : androidx.fragment.app.Fragment() {
         rvStartOptions.adapter = StartOptionsAdapter()
     }
 
+    private fun initObservers() {
+        viewModel.optionsLiveData.observe(this, Observer {
+            it?.run {
+                (rvStartOptions.adapter as? StartOptionsAdapter?)?.update(this)
+            }
+        })
+
+        viewModel.clickLiveEvent.observe(this, Observer {
+            val action = StartFragmentDirections.actionStartFragmentToPageListFragment()
+            action.setAmount(10)
+            NavHostFragment.findNavController(this).navigate(action)
+
+        })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.unbind()
+    }
 }

@@ -3,6 +3,8 @@ package com.sephoe.jetpack.ui.start
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.os.Bundle
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.OnLifecycleEvent
 import com.sephoe.domain.options.OptionsUseCaseImpl
 import com.sephoe.domain.options.OptionsEntity
 import com.sephoe.domain.options.OptionsUseCase

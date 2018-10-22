@@ -1,4 +1,6 @@
 package com.sephoe.jetpack.ui.pagelist
 
-class PageListViewModel {
+import androidx.lifecycle.ViewModel
+
+class PageListViewModel : ViewModel(){
 }
