@@ -10,7 +10,6 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/darker_gray">
@@ -27,15 +26,16 @@
             android:id="@+id/tvPageListAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{`amount = ` + viewModel.amount}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPageListName"
-            tools:text="amount = 0" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPageListName" />
 
         <Button
             android:id="@+id/bPageListGo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.onGoToClick()}"
             android:text="Go to first fragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

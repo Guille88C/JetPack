@@ -15,8 +15,13 @@ import kotlinx.android.synthetic.main.start_fragment.*
 
 class StartFragment : androidx.fragment.app.Fragment() {
 
+    // Attributes
+
     private lateinit var viewModel: StartViewModel
     private lateinit var binding: StartFragmentBinding
+
+    //----------------------------------------------------------------------------------------------
+    // Fragment
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -33,7 +38,7 @@ class StartFragment : androidx.fragment.app.Fragment() {
         initOptions()
         initObservers()
 
-        viewModel.onCreate(savedInstanceState)
+        viewModel.onCreate()
     }
 
     private fun initOptions() {
@@ -61,4 +66,5 @@ class StartFragment : androidx.fragment.app.Fragment() {
         super.onDestroyView()
         binding.unbind()
     }
+
 }
