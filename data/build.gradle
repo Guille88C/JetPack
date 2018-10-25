@@ -27,14 +27,21 @@ android {
 
 dependencies {
     def androidx_version = "1.0.0"
+    def junit_version = "4.12"
+    def espresso_version = "3.1.0-beta02"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    // Support
     implementation "androidx.appcompat:appcompat:$androidx_version"
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-beta02'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-beta02'
+
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Tests
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 }
 repositories {
     mavenCentral()

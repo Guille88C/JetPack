@@ -37,6 +37,8 @@ dependencies {
     def constraint_layout_version = "2.0.0-alpha2"
     def arch_version = "2.0.0"
     def nav_version = "1.0.0-alpha06"
+    def espresso_version = "3.1.0-beta02"
+    def junit_version = "4.12"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -49,6 +51,7 @@ dependencies {
     // Support
     implementation "androidx.appcompat:appcompat:$androidx_version"
     implementation "androidx.recyclerview:recyclerview:$androidx_version"
+    implementation "androidx.legacy:legacy-support-v4:$androidx_version"
 
     // Constraint
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
@@ -64,8 +67,7 @@ dependencies {
     implementation project(':domain')
 
     // Tests
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-beta02'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-beta02'
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 }
