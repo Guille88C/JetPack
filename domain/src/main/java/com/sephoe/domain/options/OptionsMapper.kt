@@ -12,11 +12,4 @@ object OptionsMapper {
         return result
     }
 
-    fun toService(data: List<OptionsEntity>): List<OptionsData> {
-        val result = ArrayList<OptionsData>()
-        for(it in data) {
-            result.add(OptionsData(it.name))
-        }
-        return result
-    }
 }

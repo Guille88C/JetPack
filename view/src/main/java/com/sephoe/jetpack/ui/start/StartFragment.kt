@@ -1,16 +1,14 @@
 package com.sephoe.jetpack.ui.start
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
-import com.example.guill.coroutines.R
 import com.example.guill.coroutines.databinding.StartFragmentBinding
 import com.sephoe.jetpack.ui.adapter.StartOptionsAdapter
-import com.sephoe.jetpack.ui.pagelist.PageListFragmentDirections
 import kotlinx.android.synthetic.main.start_fragment.*
 
 class StartFragment : androidx.fragment.app.Fragment() {
@@ -38,7 +36,7 @@ class StartFragment : androidx.fragment.app.Fragment() {
         initOptions()
         initObservers()
 
-        viewModel.onCreate()
+        viewModel.init()
     }
 
     private fun initOptions() {

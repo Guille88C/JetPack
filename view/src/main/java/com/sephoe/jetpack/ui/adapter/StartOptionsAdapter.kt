@@ -1,6 +1,5 @@
 package com.sephoe.jetpack.ui.adapter
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.guill.coroutines.databinding.StartOptionsItemBinding
