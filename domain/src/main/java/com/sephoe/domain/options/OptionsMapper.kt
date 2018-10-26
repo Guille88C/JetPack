@@ -11,5 +11,4 @@ object OptionsMapper {
         }
         return result
     }
-
 }
